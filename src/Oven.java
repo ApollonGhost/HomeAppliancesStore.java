@@ -1,11 +1,4 @@
-public class Oven{
-    private double width;
-    private double height;
-    private double depth;
-    private String manufacturerName = new String();
-    private String deviceName = new String();
-    private String deviceType = new String();
-    private int energyConsumption;
+public class Oven extends Device{
 
     private int power;
     private boolean digitalScreen;
@@ -45,28 +38,6 @@ public class Oven{
 
 
     //Setter and getters
-    public double getWidth() { return width; }
-    public void setWidth(int width) { this.width = width; }
-
-    public double getHeight() { return height; }
-    public void setHeight(int height) { this.height = height; }
-
-    public double getDepth() { return depth; }
-    public void setDepth(int depth) { this.depth = depth; }
-
-    public String getManufacturerName() { return manufacturerName; }
-    public void setManufacturerName(String manufacturerName) { this.manufacturerName = manufacturerName; }
-
-    public String getDeviceName() { return deviceName; }
-    public void setDeviceName(String deviceName) { this.deviceName = deviceName; }
-
-    public String getDeviceType() { return deviceType; }
-    public void setDeviceType(String deviceType) { this.deviceType = deviceType; }
-
-    public int getEnergyConsumption() { return energyConsumption; }
-    public void setEnergyConsumption(int energyConsumption) { this.energyConsumption = energyConsumption; }
-
-
     public int getCapacity() { return power; }
     public void setCapacity(int capacity) { this.power = capacity; }
 
@@ -81,10 +52,6 @@ public class Oven{
 
     public int getNumberOfRacks() { return numberOfRacks; }
     public void setNumberOfRacks(int numberOfRacks) { this.numberOfRacks = numberOfRacks; }
-
-    public void periodicMaintenance() {
-
-    }
 
     public void basicInfo() {
         System.out.println();

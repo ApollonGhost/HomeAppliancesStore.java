@@ -1,11 +1,4 @@
-public class AirCondition{
-    private double width;
-    private double height;
-    private double depth;
-    private String manufacturerName = new String();
-    private String deviceName = new String();
-    private String deviceType = new String();
-    private int energyConsumption;
+public class AirCondition extends Device{
 
     private int noiseLevel;
     private int lowestTemp;
@@ -44,47 +37,6 @@ public class AirCondition{
     }
 
     //Setter and getters
-    public void setHeight(int height) { this.height = height; }
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-    public void setDeviceType(String deviceType) {
-        this.deviceType = deviceType;
-    }
-    public void setEnergyConsumption(int energyConsumption) {
-        this.energyConsumption = energyConsumption;
-    }
-    public void setManufacturerName(String manufacturerName) {
-        this.manufacturerName = manufacturerName;
-    }
-    public void setDepth(int depth) {
-        this.depth = depth;
-    }
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-    public double getHeight() { return height; }
-    public double getDepth() {
-        return depth;
-    }
-    public String getManufacturerName() {
-        return manufacturerName;
-    }
-    public String getDeviceName() {
-        return deviceName;
-    }
-    public String getDeviceType() {
-        return deviceType;
-    }
-    public int getEnergyConsumption() {
-        return energyConsumption;
-    }
-
-
     public int getNoiseLevel() { return noiseLevel; }
     public void setNoiseLevel(int noiseLevel) { this.noiseLevel = noiseLevel; }
 
@@ -99,10 +51,6 @@ public class AirCondition{
 
     public boolean isTurboMode() { return turboMode; }
     public void setTurboMode(boolean turboMode) { this.turboMode = turboMode; }
-
-    public void periodicMaintenance() {
-
-    }
 
     public void basicInfo() {
         System.out.println();

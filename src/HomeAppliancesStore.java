@@ -25,6 +25,37 @@ public class HomeAppliancesStore {
         return Employees;
     }
 
+    public void deviceStatus(Device obj) {
+
+        if(obj instanceof Fridge) {
+            if(obj.status) {
+                System.out.println("This fridge  is on.");
+            } else {
+                System.out.println("This fridge is off");
+            }
+        } else if(obj instanceof WashingMachine) {
+            if(obj.status) {
+                System.out.println("This washing machine is on");
+            } else {
+                System.out.println("This washing machine is off");
+            }
+        } else if(obj instanceof Oven) {
+            if(obj.status) {
+                System.out.println("This Oven is on");
+            } else {
+                System.out.println("This Oven is off");
+            }
+        } else if (obj instanceof AirCondition) {
+            if(obj.status) {
+                System.out.println("This air conditioner is on");
+            } else {
+                System.out.println("This air conditioner is off");
+            }
+        }
+    }
+
+
+    //Main
     public static void main(String args[]) {
         //Askisi 3
         HomeAppliancesStore ena = new HomeAppliancesStore();
@@ -59,7 +90,7 @@ public class HomeAppliancesStore {
         System.out.println();
         int sumOfObjects = Fridge.getNumberOfObjects() + WashingMachine.getNumberOfObjects() + Oven.getNumberOfObjects() + AirCondition.getNumberOfObjects();
         System.out.printf("# Our store has a total stock of "+sumOfObjects+" items. Specifically we have:\n-"+Fridge.getNumberOfObjects()+" fridges,\n-"+WashingMachine.getNumberOfObjects()+" washing machines,\n-"+Oven.getNumberOfObjects()+
-                " ovens\n-"+AirCondition.getNumberOfObjects()+" air conditioners.");
+               " ovens\n-"+AirCondition.getNumberOfObjects()+" air conditioners.");
         System.out.println();
         System.out.println();
         System.out.println();
@@ -78,5 +109,6 @@ public class HomeAppliancesStore {
         //System.out.println(f1.getNumberOfObjects());
 
     }
+
 
 }

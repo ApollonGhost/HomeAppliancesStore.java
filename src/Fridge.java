@@ -1,11 +1,4 @@
-public class Fridge{
-    private double width;
-    private double height;
-    private double depth;
-    private String manufacturerName = new String();
-    private String deviceName = new String();
-    private String deviceType = new String();
-    private int energyConsumption;
+public class Fridge extends Device{
 
     private int numberOfDoors;
     private boolean iceDispenser;
@@ -35,7 +28,6 @@ public class Fridge{
         this.lowestTemp = lowestTemp;
     }
 
-
     /**
      * This method returns the number of Objects created in the specific class.
      *
@@ -44,9 +36,8 @@ public class Fridge{
      *     The method returns the an integer that represents the number of objects created.
      * </p>
      *
-     * @return integer numberOfObjects
-     *
      */
+
     private static int numberOfObjects = 0;
     {
         numberOfObjects++;
@@ -55,29 +46,9 @@ public class Fridge{
         return numberOfObjects;
     }
 
-    //Setter and getters
-    public double getWidth() { return width; }
-    public void setWidth(int width) { this.width = width; }
-
-    public double getHeight() { return height; }
-    public void setHeight(int height) { this.height = height; }
-
-    public double getDepth() { return depth; }
-    public void setDepth(int depth) { this.depth = depth; }
-
-    public String getManufacturerName() { return manufacturerName; }
-    public void setManufacturerName(String manufacturerName) { this.manufacturerName = manufacturerName; }
-
-    public String getDeviceName() { return deviceName; }
-    public void setDeviceName(String deviceName) { this.deviceName = deviceName; }
-
-    public String getDeviceType() { return deviceType; }
-    public void setDeviceType(String deviceType) { this.deviceType = deviceType; }
-
-    public int getEnergyConsumption() { return energyConsumption; }
-    public void setEnergyConsumption(int energyConsumption) { this.energyConsumption = energyConsumption; }
 
 
+    //Setter and Getter
     public int getNumberOfDoors() { return numberOfDoors; }
     public void setNumberOfDoors(int numberOfDoors) { this.numberOfDoors = numberOfDoors; }
 
@@ -93,9 +64,6 @@ public class Fridge{
     public int getLowestTemp() { return lowestTemp; }
     public void setLowestTemp(int lowestTemp) { this.lowestTemp = lowestTemp; }
 
-    public void periodicMaintenance() {
-
-    }
 
 
     /**
@@ -166,4 +134,5 @@ public class Fridge{
         System.out.println("====================================");
         System.out.println();
     }
+
 }
