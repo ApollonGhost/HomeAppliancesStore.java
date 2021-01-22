@@ -24,6 +24,22 @@ public class HomeAppliancesStore {
     public int numberOfOvens = 0;
     public int numberOfAirConditions = 0;
 
+
+    //Deletes the contents of out.txt file if previously created from another run of the program.
+
+    FileOutputStream fileOut;
+    {
+        try {
+            fileOut = new FileOutputStream("out.txt", false);
+            ObjectOutputStream objOut = new ObjectOutputStream((fileOut));
+            objOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     public void setName(String name){ this.storeName = name;}
     public void setAddress(String address){
         this.storeAddress = address;
@@ -150,9 +166,9 @@ public class HomeAppliancesStore {
     }
 
     //Writing objects in a file
-    public void writeObjects(Fridge[] array) {
+    public void writeObjects(Device[] array) {
         try {
-            FileOutputStream fileOut = new FileOutputStream("out.txt");
+            FileOutputStream fileOut = new FileOutputStream("out.txt", true);
             ObjectOutputStream objOut = new ObjectOutputStream((fileOut));
             objOut.writeObject(array[0]);
             objOut.close();
@@ -216,13 +232,14 @@ public class HomeAppliancesStore {
         ac2.allInfo();
 
         ena.readFile("devices.txt", "Fridge");
+        ena.readFile("devices.txt", "Oven");
 
         ena.writeObjects(ena.fridgeArray);
-
+        ena.writeObjects(ena.ovenArray);
 
 
         System.out.println(Fridge.getNumberOfObjects());
-        System.out.println(AirCondition.getNumberOfObjects());
+        System.out.println(Oven.getNumberOfObjects());
 
     }
 
