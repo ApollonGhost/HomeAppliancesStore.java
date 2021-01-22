@@ -1,4 +1,6 @@
-public class WashingMachine extends Device{
+import java.io.Serializable;
+
+public class WashingMachine extends Device implements Serializable{
 
     private int maxRPM;
     private int capacity;

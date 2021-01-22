@@ -1,11 +1,28 @@
 import org.w3c.dom.ls.LSOutput;
 import java.net.StandardSocketOptions;
 import java.sql.SQLOutput;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class HomeAppliancesStore {
     public static String storeName;
     public static String storeAddress;
     public static int Employees = 0;
+    public Fridge[] fridgeArray;
+    public WashingMachine[] washingMachineArray;
+    public Oven[] ovenArray;
+    public AirCondition[] airConditionArray;
+    public String deviceString;
+    public int numberOfFridges = 0;
+    public int numberOfWashingMachines = 0 ;
+    public int numberOfOvens = 0;
+    public int numberOfAirConditions = 0;
 
     public void setName(String name){ this.storeName = name;}
     public void setAddress(String address){
@@ -25,6 +42,7 @@ public class HomeAppliancesStore {
         return Employees;
     }
 
+    //Prints out device status and device type
     public void deviceStatus(Device obj) {
 
         if(obj instanceof Fridge) {
@@ -52,6 +70,97 @@ public class HomeAppliancesStore {
                 System.out.println("This air conditioner is off");
             }
         }
+    }
+
+    //File reading with scanner
+    public int readFileScanner(String fileName, String deviceName) {
+        int numberOfDevices = 0;
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String word = scanner.next();
+                if (word.equals(deviceName)) {
+                    numberOfDevices = scanner.nextInt();
+                    System.out.println(numberOfDevices);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        return numberOfDevices;
+    }
+
+
+    //File reading with BufferedReader
+    public void readFile(String fileName, String deviceName) {
+        BufferedReader br = null;
+        String line;
+        try {
+            br = new BufferedReader(new FileReader(fileName));
+            while((line = br.readLine()) !=null) {
+                if(line.contains(deviceName)){
+                    if(deviceName.equals("Fridge")){
+                        deviceString = line;
+                        System.out.println(deviceString);
+                        numberOfFridges = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+
+                    } else if(deviceName.equals("WashingMachine")) {
+                        deviceString = line;
+                        System.out.println(deviceString);
+                        numberOfWashingMachines = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+
+                    } else if(deviceName.equals("Oven")) {
+                        deviceString = line;
+                        System.out.println(deviceString);
+                        numberOfOvens = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+
+                    } else if(deviceName.equals("AirCondition")) {
+                        deviceString = line;
+                        System.out.println(deviceString);
+                        numberOfAirConditions = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+                    }
+
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File was not found.");
+            System.exit(0);
+        } catch (IOException re) {
+            System.out.println("There was a problem with opening your file.");
+            System.exit(0);
+        }
+        fridgeArray = new Fridge[numberOfFridges];
+        for(int i=0; i<numberOfFridges; i++) {
+            fridgeArray[i] = new Fridge();
+        }
+        washingMachineArray = new WashingMachine[numberOfWashingMachines];
+        for(int i=0; i<numberOfWashingMachines; i++){
+            washingMachineArray[i] = new WashingMachine();
+        }
+        ovenArray = new Oven[numberOfOvens];
+        for(int i=0; i<numberOfOvens; i++) {
+            ovenArray[i] = new Oven();
+        }
+        airConditionArray = new AirCondition[numberOfAirConditions];
+        for(int i=0; 0<numberOfAirConditions; i++ ){
+            airConditionArray[i] = new AirCondition();
+        }
+    }
+
+    //Writing objects in a file
+    public void writeObjects(Fridge[] array) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("out.txt");
+            ObjectOutputStream objOut = new ObjectOutputStream((fileOut));
+            objOut.writeObject(array[0]);
+            objOut.close();
+            System.out.println("The object was successfully written to a file.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -96,6 +205,7 @@ public class HomeAppliancesStore {
         System.out.println();
         System.out.println("# These items' specifications are listed below:");
 
+
         f1.allInfo();
         f2.allInfo();
         wm1.allInfo();
@@ -105,8 +215,14 @@ public class HomeAppliancesStore {
         ac1.allInfo();
         ac2.allInfo();
 
-        //System.out.println(wm1.getNumberOfObjects());
-        //System.out.println(f1.getNumberOfObjects());
+        ena.readFile("devices.txt", "Fridge");
+
+        ena.writeObjects(ena.fridgeArray);
+
+
+
+        System.out.println(Fridge.getNumberOfObjects());
+        System.out.println(AirCondition.getNumberOfObjects());
 
     }
 

@@ -1,4 +1,6 @@
-public class Oven extends Device{
+import java.io.Serializable;
+
+public class Oven extends Device implements Serializable{
 
     private int power;
     private boolean digitalScreen;

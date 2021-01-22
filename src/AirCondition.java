@@ -1,4 +1,6 @@
-public class AirCondition extends Device{
+import java.io.Serializable;
+
+public class AirCondition extends Device implements Serializable{
 
     private int noiseLevel;
     private int lowestTemp;

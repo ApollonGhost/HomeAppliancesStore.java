@@ -1,4 +1,6 @@
-public class Fridge extends Device{
+import java.io.Serializable;
+
+public class Fridge extends Device implements Serializable{
 
     private int numberOfDoors;
     private boolean iceDispenser;
@@ -40,11 +42,9 @@ public class Fridge extends Device{
 
     private static int numberOfObjects = 0;
     {
-        numberOfObjects++;
+       numberOfObjects++;
     }
-    public static int getNumberOfObjects() {
-        return numberOfObjects;
-    }
+    public static int getNumberOfObjects() { return numberOfObjects; }
 
 
 
