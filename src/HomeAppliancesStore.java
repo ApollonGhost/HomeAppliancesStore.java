@@ -148,7 +148,7 @@ public class HomeAppliancesStore {
                         //System.out.println(deviceString);
                         numberOfAirConditions = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
                         airConditionArray = new AirCondition[numberOfAirConditions];
-                        for(int i=0; 0<numberOfAirConditions; i++ ){
+                        for(int i=0; i<numberOfAirConditions; i++){
                             airConditionArray[i] = new AirCondition();
                         }
                     }
@@ -235,14 +235,18 @@ public class HomeAppliancesStore {
         ena.readFile("devices.txt", "Fridge");
         ena.readFile("devices.txt", "WashingMachine");
         ena.readFile("devices.txt", "Oven");
+        ena.readFile("devices.txt", "AirCondition");
 
         ena.writeObjects(ena.fridgeArray);
         ena.writeObjects(ena.washingMachineArray);
+        ena.writeObjects(ena.ovenArray);
+        ena.writeObjects(ena.airConditionArray);
 
 
         System.out.println(Fridge.getNumberOfObjects());
         System.out.println(WashingMachine.getNumberOfObjects());
         System.out.println(Oven.getNumberOfObjects());
+        System.out.println(AirCondition.getNumberOfObjects());
 
     }
 
