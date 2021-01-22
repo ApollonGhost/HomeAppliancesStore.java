@@ -118,23 +118,39 @@ public class HomeAppliancesStore {
                 if(line.contains(deviceName)){
                     if(deviceName.equals("Fridge")){
                         deviceString = line;
-                        System.out.println(deviceString);
+                        //System.out.println(deviceString);
                         numberOfFridges = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+                        fridgeArray = new Fridge[numberOfFridges];
+                        for(int i=0; i<numberOfFridges; i++) {
+                            fridgeArray[i] = new Fridge();
+                        }
 
                     } else if(deviceName.equals("WashingMachine")) {
                         deviceString = line;
-                        System.out.println(deviceString);
+                        //System.out.println(deviceString);
                         numberOfWashingMachines = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+                        washingMachineArray = new WashingMachine[numberOfWashingMachines];
+                        for(int i=0; i<numberOfWashingMachines; i++){
+                            washingMachineArray[i] = new WashingMachine();
+                        }
 
                     } else if(deviceName.equals("Oven")) {
                         deviceString = line;
-                        System.out.println(deviceString);
+                        //System.out.println(deviceString);
                         numberOfOvens = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+                        ovenArray = new Oven[numberOfOvens];
+                        for(int i=0; i<numberOfOvens; i++) {
+                            ovenArray[i] = new Oven();
+                        }
 
                     } else if(deviceName.equals("AirCondition")) {
                         deviceString = line;
-                        System.out.println(deviceString);
+                        //System.out.println(deviceString);
                         numberOfAirConditions = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
+                        airConditionArray = new AirCondition[numberOfAirConditions];
+                        for(int i=0; 0<numberOfAirConditions; i++ ){
+                            airConditionArray[i] = new AirCondition();
+                        }
                     }
 
                 }
@@ -147,30 +163,19 @@ public class HomeAppliancesStore {
             System.out.println("There was a problem with opening your file.");
             System.exit(0);
         }
-        fridgeArray = new Fridge[numberOfFridges];
-        for(int i=0; i<numberOfFridges; i++) {
-            fridgeArray[i] = new Fridge();
-        }
-        washingMachineArray = new WashingMachine[numberOfWashingMachines];
-        for(int i=0; i<numberOfWashingMachines; i++){
-            washingMachineArray[i] = new WashingMachine();
-        }
-        ovenArray = new Oven[numberOfOvens];
-        for(int i=0; i<numberOfOvens; i++) {
-            ovenArray[i] = new Oven();
-        }
-        airConditionArray = new AirCondition[numberOfAirConditions];
-        for(int i=0; 0<numberOfAirConditions; i++ ){
-            airConditionArray[i] = new AirCondition();
-        }
+
     }
+
 
     //Writing objects in a file
     public void writeObjects(Device[] array) {
         try {
             FileOutputStream fileOut = new FileOutputStream("out.txt", true);
             ObjectOutputStream objOut = new ObjectOutputStream((fileOut));
-            objOut.writeObject(array[0]);
+            for(int i=0; i < array.length; i++) {
+                objOut.writeObject(array[i]);
+
+            }
             objOut.close();
             System.out.println("The object was successfully written to a file.");
         } catch (Exception e) {
@@ -192,7 +197,7 @@ public class HomeAppliancesStore {
 
 
         //Askisi 4
-        Fridge f1 = new Fridge(187, 70, 72, "Hyundai", "HRD19", "Household fridge", 300, 2,
+        /* Fridge f1 = new Fridge(187, 70, 72, "Hyundai", "HRD19", "Household fridge", 300, 2,
                 true, 451, 97, -3);
         Fridge f2 = new Fridge(178.2, 91.3, 74.9, "Westinghouse", "WQE6870BA", "French Door Fridge", 300, 4,
                 true, 413, 193, -7);
@@ -212,6 +217,7 @@ public class HomeAppliancesStore {
         AirCondition ac2 = new AirCondition(307, 890, 233, "Mitsubishi", "MSZ LN25VGB", "Wall air conditioner",
                 739, 58, 15, 35, false, true);
 
+
         System.out.println();
         int sumOfObjects = Fridge.getNumberOfObjects() + WashingMachine.getNumberOfObjects() + Oven.getNumberOfObjects() + AirCondition.getNumberOfObjects();
         System.out.printf("# Our store has a total stock of "+sumOfObjects+" items. Specifically we have:\n-"+Fridge.getNumberOfObjects()+" fridges,\n-"+WashingMachine.getNumberOfObjects()+" washing machines,\n-"+Oven.getNumberOfObjects()+
@@ -221,24 +227,21 @@ public class HomeAppliancesStore {
         System.out.println();
         System.out.println("# These items' specifications are listed below:");
 
+        System.out.println();
 
-        f1.allInfo();
-        f2.allInfo();
-        wm1.allInfo();
-        wm2.allInfo();
-        o1.allInfo();
-        o2.allInfo();
-        ac1.allInfo();
-        ac2.allInfo();
+        */
+
 
         ena.readFile("devices.txt", "Fridge");
+        ena.readFile("devices.txt", "WashingMachine");
         ena.readFile("devices.txt", "Oven");
 
         ena.writeObjects(ena.fridgeArray);
-        ena.writeObjects(ena.ovenArray);
+        ena.writeObjects(ena.washingMachineArray);
 
 
         System.out.println(Fridge.getNumberOfObjects());
+        System.out.println(WashingMachine.getNumberOfObjects());
         System.out.println(Oven.getNumberOfObjects());
 
     }
