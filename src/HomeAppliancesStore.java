@@ -89,6 +89,7 @@ public class HomeAppliancesStore {
     }
 
     //File reading with scanner
+    //Done for testing purposes.
     public int readFileScanner(String fileName, String deviceName) {
         int numberOfDevices = 0;
         File file = new File(fileName);
@@ -121,7 +122,7 @@ public class HomeAppliancesStore {
                         //System.out.println(deviceString);
                         numberOfFridges = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
                         fridgeArray = new Fridge[numberOfFridges];
-                        for(int i=0; i<numberOfFridges; i++) {
+                        for(int i=0; i<numberOfFridges; i++) {                          //loop to create objects in the array of the specified device
                             fridgeArray[i] = new Fridge();
                         }
 
@@ -130,7 +131,7 @@ public class HomeAppliancesStore {
                         //System.out.println(deviceString);
                         numberOfWashingMachines = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
                         washingMachineArray = new WashingMachine[numberOfWashingMachines];
-                        for(int i=0; i<numberOfWashingMachines; i++){
+                        for(int i=0; i<numberOfWashingMachines; i++){                    //loop to create objects in the array of the specified device
                             washingMachineArray[i] = new WashingMachine();
                         }
 
@@ -139,7 +140,7 @@ public class HomeAppliancesStore {
                         //System.out.println(deviceString);
                         numberOfOvens = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
                         ovenArray = new Oven[numberOfOvens];
-                        for(int i=0; i<numberOfOvens; i++) {
+                        for(int i=0; i<numberOfOvens; i++) {                             //loop to create objects in the array of the specified device
                             ovenArray[i] = new Oven();
                         }
 
@@ -148,7 +149,7 @@ public class HomeAppliancesStore {
                         //System.out.println(deviceString);
                         numberOfAirConditions = Integer.parseInt(deviceString.substring(deviceString.indexOf(" ")+1));
                         airConditionArray = new AirCondition[numberOfAirConditions];
-                        for(int i=0; i<numberOfAirConditions; i++){
+                        for(int i=0; i<numberOfAirConditions; i++){                      //loop to create objects in the array of the specified device
                             airConditionArray[i] = new AirCondition();
                         }
                     }
@@ -182,6 +183,29 @@ public class HomeAppliancesStore {
             e.printStackTrace();
         }
 
+
+    }
+
+
+    //Askisi 7
+    //This is used in the gui class to create the objects when the button is pressed.
+    public void objectCreation(int fridge, int washingMachine, int oven, int airCondition) {
+        fridgeArray = new Fridge[fridge];
+        washingMachineArray = new WashingMachine[washingMachine];
+        ovenArray = new Oven[oven];
+        airConditionArray = new AirCondition[airCondition];
+        for(int i=0; i<fridge; i++) {
+            fridgeArray[i] = new Fridge();
+        }
+        for(int i=0; i<washingMachine; i++) {
+            washingMachineArray[i] = new WashingMachine();
+        }
+        for(int i=0; i<oven; i++) {
+            ovenArray[i] = new Oven();
+        }
+        for(int i=0; i<airCondition; i++) {
+            airConditionArray[i] = new AirCondition();
+        }
     }
 
 
@@ -232,6 +256,10 @@ public class HomeAppliancesStore {
         */
 
 
+
+        //Askisi 6
+
+        /*
         ena.readFile("devices.txt", "Fridge");
         ena.readFile("devices.txt", "WashingMachine");
         ena.readFile("devices.txt", "Oven");
@@ -242,11 +270,16 @@ public class HomeAppliancesStore {
         ena.writeObjects(ena.ovenArray);
         ena.writeObjects(ena.airConditionArray);
 
-
         System.out.println(Fridge.getNumberOfObjects());
         System.out.println(WashingMachine.getNumberOfObjects());
         System.out.println(Oven.getNumberOfObjects());
         System.out.println(AirCondition.getNumberOfObjects());
+        */
+
+        //Askisi 7
+        GUI gui = new GUI();
+
+
 
     }
 
